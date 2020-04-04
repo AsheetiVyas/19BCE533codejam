@@ -1,0 +1,34 @@
+n=int(input())
+sample=[]
+
+for i in range(n):
+  s1=input()
+  sample.append(s1)
+for i in range(n):
+    y=0
+    new=list(sample[i])
+    while y<(len(new)-1):
+        z=int(new[y])-int(new[y+1])
+        if z>0:
+            w=1
+            while w!=(z+1):
+                new.insert(y+w,')')
+                w=w+1
+        elif z<0:
+            w=1
+            while w!=(abs(z)+1):
+                new.insert(y+w,'(')
+                w=w+1
+        y=y+abs(z)
+        y=y+1
+    x=int(new[0])
+    y=int(new[-1])
+    while x!=0:
+        new.insert(0,'(')
+        x=x-1
+    while y!=0:
+        new.append(')')
+        y=y-1
+    sample[i]="".join(new)
+for i in range(len(sample)):
+    print("case #"+str(i+1)+": "+sample[i])
